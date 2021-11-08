@@ -1,0 +1,19 @@
+<!-- VARIABLES: base_status -->
+<div class="card">
+  <div class="card-body">
+    <%= form_with(model: [:admin, base_status]) do |form| %>
+        
+        <div class="mb-3">
+            <%= form.label :descripcion, class: 'form-label' %>
+            <%= form.text_field :descripcion, class: 'form-control' %>
+            <% if base_status.errors[:descripcion].any? %>
+              <div>
+                <%= base_status.errors[:descripcion].first %>
+              </div>
+            <% end %>
+        </div>
+
+        <%= form.submit class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
