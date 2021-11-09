@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'pages/home'
   namespace :admin do
     #get 'roles/index'
     #get 'roles/new'
@@ -7,9 +8,9 @@ Rails.application.routes.draw do
     #get 'roles/edit'
 
     get 'roles',            to: 'roles#index',    as: 'roles'
-    get 'roles/new',        to: 'roles#new',      as: 'new_rol'
-    get 'roles/:id',        to: 'roles#show',     as: 'rol'
-    get 'roles/:id/edit',   to: 'roles#edit',     as: 'edit_rol'   
+    get 'roles/new',        to: 'roles#new',      as: 'new_role'
+    get 'roles/:id',        to: 'roles#show',     as: 'role'
+    get 'roles/:id/edit',   to: 'roles#edit',     as: 'edit_role'   
 
     post    'roles',           to: 'roles#create'
     put     'roles/:id',       to: 'roles#update'

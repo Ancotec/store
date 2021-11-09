@@ -45,7 +45,7 @@ class Admin::StatusesController < ApplicationController
     params.require(:status).permit(:descripcion)
   end
 
-  def set_category
+  def set_status
     @status = Status.find(params[:id])
   rescue
     flash[:set_status_error] = "Could not find the record #{params[:id]}"

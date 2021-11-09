@@ -2,7 +2,7 @@ class Admin::ProductsController < ApplicationController
 
   layout 'admin_layout'
 
-  before_action :set_product, only: [:show, :edit, :update, :delete]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.all
@@ -20,7 +20,7 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(params_product)
-    if @product
+    if @product.save
       redirect_to admin_products_path
     else
       render :new
@@ -47,6 +47,9 @@ class Admin::ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  rescue
+    flash[:set_product_error] = "Could not finf the record #{params[:id]}"
+    redirect_to admin_products_path
   end
 
 end

@@ -2,19 +2,19 @@
 <div class="card">
   <div class="card-body">
     <h5  class="card-title"> Index </h5>
-    <!--<%= link_to "New", admin_new_status_path, class: 'btn btn-primary' %>-->
+    <%= link_to "New", admin_new_status_path, class: 'btn btn-primary' %>
     <% if flash[:set_status_error] %>
       <%= flash[:set_status_error] %>
     <% end %>
 
     <table class="table table-hover">
       <tr>
-        <th> Dato 1</th>
-        <th> Dato 2 </th>
+        <th> Status</th>
+        <th> Action </th>
       </tr>
       <% @statuses.each do |c| %>
         <tr>
-          <td> <%= c.descripcion %> </td>
+          <td> <%= c.description %> </td>
           <td>
               <%= link_to "Edit", admin_edit_status_path(c) %>
               <%= link_to "Delete", admin_status_path(c), method: :delete %>
