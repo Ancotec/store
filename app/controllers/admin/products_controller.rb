@@ -5,17 +5,20 @@ class Admin::ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    #@products = Product.all # problema n+1
+    @products = Product.includes(:category)
   end
 
   def new
     @product = Product.new
+    set_categories
   end
 
   def show
   end
 
   def edit
+    set_categories
   end
 
   def create
@@ -42,7 +45,7 @@ class Admin::ProductsController < ApplicationController
 
   private
   def params_product
-   param.require(:product).permit(:name)
+   params.require(:product).permit(:name, :description, :category_id)
   end
 
   def set_product
